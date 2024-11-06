@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="container">
+
+        <div class="row">
+            <div class="col-6">
+                <img src="{{ programm.get_image }}" class="programm-image" alt=""/>
+            </div>
+            <div class="col-6 d-flex flex-md-column gap-md-3">
+
+                <h1 style="color: #258FE6">{{ programm.name }}</h1>
+
+                <span>Описание: {{ programm.description }}</span>
+
+                <span>Цена: {{ programm.price }}₽</span>
+
+                <span>Материал: {{ programm.material }}</span>
+
+                <a href="/" class="return-btn btn btn-primary my-4 w-25">
+                    Назад
+                </a>
+
+            </div>
+        </div>
+
+    </main>
+{% endblock content %}

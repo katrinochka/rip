@@ -1,0 +1,21 @@
+{% load static %}
+
+{% if draft_manufacture %}
+    <div class="col md-4 justify-end">
+        <a href="/manufactures/{{ draft_manufacture.id }}/" class="w-25">
+            <button type="submit" class="bin btn btn-primary position-relative w-100">
+                Корзина
+                <div class="badge position-absolute badge bg-primary rounded-pill">
+                    {{ programms_count }}
+                </div>
+            </button>
+        </a>
+    </div>
+{% else %}
+    <div class="col md-4 justify-end">
+        <button type="submit" class="bin btn btn-secondary disabled w-25">
+            Корзина
+        </button>
+    </div>
+{% endif %}
+

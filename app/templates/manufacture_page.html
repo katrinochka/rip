@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="container">
+        <h3  class="text-center" style="color: #258FE6">Черновая деталь</h3>
+         <div class="form-group">
+            <label class="form-label">Название детали</label>
+            {% if manufacture.name %}
+                <input placeholder="Введите название" disabled type="text" class="form-control" style="width: 250px" value="{{ manufacture.name }}">
+            {% else %}
+                <input placeholder="Введите название" disabled type="text" class="form-control" style="width: 250px">
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label class="form-label">Дата изготовления</label>
+            {% if manufacture.date %}
+                <input placeholder="Введите дату" disabled type="text" class="form-control" style="width: 250px" value="{{ manufacture.date }}">
+            {% else %}
+                <input placeholder="Введите дату" disabled type="text" class="form-control" style="width: 250px">
+            {% endif %}
+        </div>
+        <form method="post" action="{% url 'delete_manufacture' manufacture.id %}">
+            {% csrf_token %}
+                <button class="btn btn-danger delete-draft-manufacture-btn" type="submit">
+                    Удалить
+                </button>
+            </a>
+        </form>
+            {% if manufacture.get_programms|length > 0 %}
+                <h4 class="text-center" style="color: #258FE6">Программы</h4>
+                <div class="cards-wrapper d-flex flex-column">
+                    {% for programm in manufacture.get_programms %}
+                        <div class="card w-100 mb5">
+                             <div class="row g-0">
+                                <div class="col-md-6 d-flex justify-center">
+                                    <img src="{{ programm.get_image }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ programm.name }}</h5>
+                                        <p class="card-text">Цена: {{ programm.price }}₽</p>
+                                        <div class="form-group">
+                                            <label class="form-label">Длительность (мин)</label>
+                                            {% if programm.value %}
+                                                <input placeholder="Введите количество" disabled type="text" class="form-control" style="width: 250px" value="{{ programm.value }}">
+                                            {% else %}
+                                                <input placeholder="Введите количество" disabled type="text" class="form-control" style="width: 250px">
+                                            {% endif %}
+                                        </div>
+                                        <a href="/programms/{{ programm.id }}/" class="btn btn-primary" style="width: 100px">
+                                            Открыть
+                                        </a>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                 <h4 class="text-center">Программы еще не добавлены</h4>
+            {% endif %}
+
+        </div>
+    </main>
+{% endblock content %}
