@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main class="container">
+        <div class="d-flex justify-content-end align-items-center"> 
+            <a href="/manufactures/{{ draft_manufacture.id }}/">
+                <div class="row d-flex justify-content-between align-items-center w-100">
+                    <div class="col-md-2"> 
+                        <div class="badge position-relative badge rounded-pill" style="float: right;">
+                            {{ programms_count }}
+                        </div>
+                        <img src="http://192.168.0.104:9000/images/busket.png">
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="header-text">Программы ЧПУ</div>
+        <div class="col md-8">
+            <form class="search-bar" action="/" method="GET">
+                <div class="row">
+                    <div class="col-md-8">
+                        <input type="text" class="form-control rounded-input" placeholder="Поиск программ" name="programm_name" value="{{ programm_name }}">
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary search-btn">Поиск</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="cards-wrapper">
+            {% for programm in programms %}
+                {% include "programm_card.html" %}
+            {% endfor %}
+        </div>
+    </main>
+{% endblock content %}
+
