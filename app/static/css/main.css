@@ -64,38 +64,6 @@
     align-items: center !important;
 }
 
-/* .cards-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 25%));
-    gap: 25px;
-    justify-content: space-between;
-    margin-top: 15px;
-}
-
-.cards-wrapper .card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border-color);
-    color: var(--card-text);
-    border-radius: 16px;
-}
-
-.cards-wrapper .card .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.cards-wrapper .card .card-body .card-info {
-    margin-bottom: 25px;
-}
-
-.cards-wrapper .card img {
-    height: 250px;
-    width: 80%;
-    margin: auto;
-    padding: 25px 0;
-} */
-
 .programm-preview {
     width: 100%;
     height: 150px;
@@ -113,22 +81,12 @@ main {
     padding: 25px 0;
 }
 
-/* .badge {
-    position: absolute !important; 
-    top: -10px !important;
-    right: -15px;
-    color: var(--badge-color) !important;
-    background-color: var(--badge-bg) !important;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-} */
-
 .badge {
     top: 10px;
     right: -10px;
     color: var(--badge-color) !important;
     background-color: var(--badge-bg);
-    /* transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out; */
-    position: absolute; /* Важно добавить этот стиль */
+    position: absolute; 
 }
 
 .bin.btn.btn-primary:hover .badge {
@@ -236,41 +194,6 @@ main {
     font-weight: bold;
 }
 
-/* .card {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-img-top {
-    width: 100%;
-    height: auto;
-    border-radius: 10px 10px 0 0;
-  }
-  
-  .card-body {
-    padding: 20px;
-  }
-  
-  .card-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .card-text {
-    margin-bottom: 10px;
-  }
-  
-  .form-group {
-    margin-bottom: 10px;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-  } */
-
 .cards-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 25%));
@@ -298,26 +221,26 @@ main {
 }
 
 .cards-wrapper .card img {
-    width: 100%; /* Занимает всю ширину карточки */
-    height: auto; /* Высота подстраивается автоматически */
-    object-fit: contain; /*  Масштабирует изображение, чтобы оно полностью покрывало область */
-    border-radius: 16px 16px 0px 0px; /* Скругление только верхних углов изображения */
+    width: 100%;
+    height: auto; 
+    object-fit: contain;
+    border-radius: 16px 16px 0px 0px;
     margin-bottom: 10px;
 }
 
 .cards-wrapper .card img {
-    width: 100%; /* Занимает всю ширину карточки */
-    height: auto; /* Высота подстраивается автоматически */
-    object-fit: cover; /*  Масштабирует изображение, чтобы оно полностью покрывало область */
-    border-radius: 16px 16px 0 0; /* Скругление только верхних углов изображения */
+    width: 100%; 
+    height: auto; 
+    object-fit: cover; 
+    border-radius: 16px 16px 0 0;
     margin-bottom: 10px;
 }
 
 .cards-wrapper .card .card-manufacture {
-    width: 100%; /* Занимает всю ширину карточки */
-    height: 100%; /* Высота подстраивается автоматически */
-    object-fit: cover; /*  Масштабирует изображение, чтобы оно полностью покрывало область */
-    border-radius: 16px 0 0 16px; /* Скругление только верхних углов изображения */
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 16px 0 0 16px; 
     margin-bottom: 10px;
 }
 
@@ -334,5 +257,5 @@ main {
   width: 100%;
   background-color: #007bff;
   border-color: #007bff;
-  border-radius: 8px; /* Скругленные углы кнопки */
+  border-radius: 8px; 
 }
