@@ -1,8 +1,0 @@
-Django==4.2.7
-psycopg2
-psycopg
-Pillow
-django-storages==1.14.2
-boto3==1.29.2
-botocore==1.32.2
-minio
