@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from urllib.parse import urlparse
 
 from django.contrib.auth.models import User
 
@@ -20,9 +21,11 @@ class Programm(models.Model):
 
     def get_image(self):
         if self.image:
-            return self.image.url.replace("minio", "localhost", 1)
+            parsed_url = urlparse(self.image.url)
+            path = parsed_url.path
+            return f"http://192.168.1.10:9000{path}"
 
-        return "http://localhost:9000/images/default.png"
+        return "http://192.168.1.10:9000/images/default.png"
 
     def __str__(self):
         return self.name
