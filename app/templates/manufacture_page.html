@@ -3,7 +3,14 @@
 
 {% block content %}
     <main class="container">
-        <div class="header-text" style="font-size: 40px;">Черновая деталь</div>
+        <div class="header-text" style="font-size: 40px;">Заявка на производство</div>
+        <form method="post" action="{% url 'delete_manufacture' manufacture.id %}">
+            {% csrf_token %}
+                <button class="btn btn-danger" type="submit" style ="border-radius: 8px; position:absolute; right: 5%;">
+                    Удалить
+                </button>
+            </a>
+        </form>
         <span>
             <div class="header-text" style="font-size: 16px; text-align: left;">Название детали:</div>
             {% if manufacture.name %}
@@ -21,47 +28,38 @@
             {% endif %}
         </span>
 
-        <form method="post" action="{% url 'delete_manufacture' manufacture.id %}">
-            {% csrf_token %}
-                <button class="btn btn-danger" type="submit" style ="border-radius: 8px;">
-                    Удалить
-                </button>
-            </a>
-        </form>
-            {% if manufacture.get_programms|length > 0 %}
-                <div class="header-text" style="font-size: 40px;">Заявка на производство</div>
-                <div class="cards-wrapper d-flex flex-column">
-                    {% for programm in manufacture.get_programms %}
-                        <div class="card w-100 mb5">
-                             <div class="row g-0">
-                                <div class="col-md-4 d-flex justify-content-center">
-                                    <img src="{{ programm.get_image }}" class="card-manufacture" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <div class="header-text" style="font-size: 24px;">{{ programm.name }}</div>
-                                        <p class="card-text">Цена: {{ programm.price }}₽</p>
-                                        <div class="form-group">
-                                            <label class="form-label">Длительность (мин)</label>
-                                            {% if programm.value %}
-                                                <input placeholder="Введите количество" disabled type="text" class="form-control" style="width: 250px" value="{{ programm.value }}">
-                                            {% else %}
-                                                <input placeholder="Введите количество" disabled type="text" class="form-control" style="width: 250px">
-                                            {% endif %}
-                                        </div>
-                                        <a href="/programms/{{ programm.id }}/" class="btn btn-primary" style="width: 150px">
-                                            Подробнее
-                                        </a>
+        {% if manufacture.get_programms|length > 0 %}
+            <div class="cards-wrapper d-flex flex-column">
+                {% for programm in manufacture.get_programms %}
+                    <div class="card w-100 mb5">
+                            <div class="row g-0">
+                            <div class="col-md-4 d-flex justify-content-center">
+                                <img src="{{ programm.get_image }}" class="card-manufacture" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <div class="header-text" style="font-size: 24px;">{{ programm.name }}</div>
+                                    <p class="card-text">Цена: {{ programm.price }}₽</p>
+                                    <div class="form-group">
+                                        <label class="form-label">Длительность (мин)</label>
+                                        {% if programm.value %}
+                                            <input placeholder="Введите количество" disabled type="text" class="form-control" style="width: 250px" value="{{ programm.value }}">
+                                        {% else %}
+                                            <input placeholder="Введите количество" disabled type="text" class="form-control" style="width: 250px">
+                                        {% endif %}
                                     </div>
+                                    <a href="/programms/{{ programm.id }}/" class="btn btn-primary" style="width: 150px">
+                                        Подробнее
+                                    </a>
                                 </div>
-                             </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <div class="header-text" style="font-size: 40px;">Программы еще не добавлены</div>
-            {% endif %}
-
+                            </div>
+                            </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="header-text" style="font-size: 40px;">Программы еще не добавлены</div>
+        {% endif %}
         </div>
     </main>
 {% endblock content %}
