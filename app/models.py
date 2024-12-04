@@ -23,9 +23,9 @@ class Programm(models.Model):
         if self.image:
             parsed_url = urlparse(self.image.url)
             path = parsed_url.path
-            return f"http://192.168.1.10:9000{path}"
+            return f"http://192.168.56.101:9000{path}"
 
-        return "http://192.168.1.10:9000/images/default.png"
+        return "http://192.168.56.101:9000/images/default.png"
 
     def __str__(self):
         return self.name
@@ -55,6 +55,7 @@ class Manufacture(models.Model):
 
     name = models.CharField(blank=True, null=True)
     date = models.DateField(blank=True, null=True)
+    marriage = models.BooleanField(blank=True)
 
     def __str__(self):
         return "Деталь №" + str(self.pk)
